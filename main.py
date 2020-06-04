@@ -74,6 +74,11 @@ def main():
     dataset = 'fire.csv' # Selección de base de datos
 
     # Parámetros iniciales para los experimentos, definidos en rangos
+
+    #####################################
+    #   Cambiar estos parámetros a      #
+    #  la hora de realizar experimentos #
+    #####################################
     params = {
         'neurons': list(range(3, 24)),
         'layers': list(range(1, 5)),
