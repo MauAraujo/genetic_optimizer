@@ -28,15 +28,17 @@ def generate(generations, population, params, dataset):
     # Función para crear las generaciones con sus respectivas poblaciones
 
     f= open("results.txt","a+") # Abrir archivo donde se guardarán los resultados
+    fg= open("resultsByGen.txt","a+") # Abrir archivo donde se guardarán los resultados
     optimizer = Optimizer(params, 0.1, 0.2) # Instanciar el algoritmo genético
     networks = optimizer.population(population) # Crear la población con el número deseado
 
     # ciclo de generaciones
     for i in range(generations):
         print('generation', i)
-
+        fg.write('Generacion %d\r\n'%i)
         # Entrenar a todas las redes de la población
         train_networks(networks, dataset)
+        write_results(networks, fg)
 
         # Obtener la precisión promedio de la generación
         average_accuracy = get_average_accuracy(networks)
@@ -82,7 +84,7 @@ def main():
     params = {
         'neurons': list(range(3, 24)),
         'layers': list(range(1, 5)),
-        'epochs': list(range(100, 151, 50)),
+        'epochs': list(range(0, 601, 200)),
         'lr': list(np.arange(0.2, 0.41, 0.01)),
         'momentum': list(np.arange(0.2, 0.41, 0.01))
     }

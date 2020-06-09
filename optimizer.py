@@ -115,22 +115,19 @@ class Optimizer():
             female = random.randint(0, parents_length - 1)
 
             # Reproducirlos solo si no son la misma red
-            if male != female:
-                print('Inside')
-                male = parents[male]
-                female = parents[female]
+            print('Inside')
+            male = parents[male]
+            female = parents[female]
 
-                # Creación de nuevos individuos (hijos)
-                babies = self.breed(male, female)
+            # Creación de nuevos individuos (hijos)
+            babies = self.breed(male, female)
 
-                # Agregar a los hijos uno por uno,
-                # respetando el tamaño de población
-                for baby in babies:
-                    if len(children) < desired_length:
-                        children.append(baby)
-            else:
-                desired_length -= 1
-                
+            # Agregar a los hijos uno por uno,
+            # respetando el tamaño de población
+            for baby in babies:
+                if len(children) < desired_length:
+                    children.append(baby)
+
         # Combinar padres e hijos para crear la nueva población
         parents.extend(children)
 
