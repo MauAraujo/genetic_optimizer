@@ -110,7 +110,6 @@ class Optimizer():
 
         # Agregar hijos
         while len(children) < desired_length:
-            print(len(children) < desired_length)
             # Obtener padres de manera aleatoria de los disponibles
             male = random.randint(0, parents_length - 1)
             female = random.randint(0, parents_length - 1)
@@ -130,8 +129,8 @@ class Optimizer():
                     if len(children) < desired_length:
                         children.append(baby)
             else:
-                break
-
+                desired_length -= 1
+                
         # Combinar padres e hijos para crear la nueva población
         parents.extend(children)
 
